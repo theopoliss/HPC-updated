@@ -248,7 +248,7 @@ body::after {
 
 .modal-content {
     /* background-color: #1a1a1a; */
-    background-color: rgba(0,0,0,0.6);
+    background-color: #1a1a1a;
     margin: 15% auto;
     padding: 20px;
     width: 300px;
@@ -321,12 +321,12 @@ body::after {
 }
 
 #email {
-    border-bottom: 2px solid rgba(0,0,0,0.6);
+    border-bottom: 2px solid #1a1a1a;
     transition: all 0.3s ease;
 }
 
 #name {
-    border-bottom: 2px solid rgba(0,0,0,0.6);
+    border-bottom: 2px solid #1a1a1a;
     transition: all 0.3s ease;
 }
 

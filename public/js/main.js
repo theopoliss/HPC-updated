@@ -64,13 +64,14 @@ function showWelcomeMessage(name) {
     successMessage.style.animation = 'fadeIn 1s ease-in-out';
 }
 
-// Form submission (you can add your own logic here)
+// Form submission 
 document.getElementById('signupForm').onsubmit = async function(e) {
     e.preventDefault();
-    const name = document.getElementById('name').value;
-    const email = document.getElementById('email').value;
     const nameField = document.getElementById('name');
     const emailField = document.getElementById('email');
+    const name = nameField.value;
+    const email = emailField.value;
+    
 
     const errorMessage = emailField.parentElement.querySelector('.error-message');
 
@@ -90,12 +91,10 @@ document.getElementById('signupForm').onsubmit = async function(e) {
         errorMessage.textContent = 'Please fill out all fields';
         errorMessage.classList.add('show');
 
-        // Set timeout
-        setTimeout(() => {
-            nameField.classList.remove('error-input-line');
-            emailField.classList.remove('error-input-line');
-            errorMessage.classList.remove('show');
-        }, 4000);
+        // Remove errors when user starts typing
+        removeErrorLine(nameField);
+        removeErrorLine(emailField);
+
         return;
     }
 
@@ -107,18 +106,12 @@ document.getElementById('signupForm').onsubmit = async function(e) {
         errorMessage.textContent = 'Please enter a valid email';
         errorMessage.classList.add('show');
 
-        // Set timeout
-        setTimeout(() => {
-            emailField.classList.remove('error-input-line');
-            errorMessage.classList.remove('show');
-        }, 5000);
-        // alert('Please enter a valid email address');
+        removeErrorLine(emailField);
         return;
     }
 
     console.log('Sign up attempt with name:', name);
 
-    // Add your sign-up logic here
     try {
         const response = await fetch('/join', {
             method: 'POST',
@@ -138,11 +131,18 @@ document.getElementById('signupForm').onsubmit = async function(e) {
             emailField.classList.add('error-input-line');
             errorMessage.textContent = 'Email is already registered';
             errorMessage.classList.add('show');
+            removeErrorLine(emailField);
         }
     }
     catch (error) {
         console.log('Error', error);
     }
+}
+
+function removeErrorLine(inputElement) {
+    inputElement.addEventListener('input', function() {
+        this.classList.remove('error-input-line');
+    });
 }
 
 function showModal() {
