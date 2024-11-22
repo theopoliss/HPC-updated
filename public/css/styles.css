@@ -1,0 +1,354 @@
+body {
+    margin: 0;
+    padding: 0;
+    background-color: black;
+}
+
+.container {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.background-image {
+    position: relative;
+}
+
+.background-image img {
+    width: 100%;
+}
+
+#kipchoge {
+    position: absolute;
+    left: 0%;
+    z-index: 2;
+}
+
+@keyframes dropIn {
+    from { transform: translateY(-100%); opacity: 0; }
+    to { transform: translateY(0); opacity: 1; }
+}
+#HPC-logo {
+    position: fixed;
+    left: 0px;
+    z-index: 1;
+    animation: dropIn 2.5s ease-in-out;
+    animation-delay: 1.4s;
+    opacity: 0;
+    animation-fill-mode: forwards;
+}
+
+
+.home-text {    
+    position: absolute;
+    top: 20%;
+    left: 70%;
+    z-index: 3;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+#join {
+    font-family: 'PT Serif', serif;
+    font-weight: 1;
+    font-size: 67px;
+    margin-bottom: 0px;
+    margin-top: 10px;
+    text-decoration: none;
+    color: white;
+    /* animation: fadeIn 2s ease-in-out;
+    animation-delay: 1s;
+    animation-fill-mode: forwards;
+    opacity: 0; */
+}
+
+.join-button {
+    margin-bottom: 0px;
+    margin-top: 10px;
+    margin-left: -100px;
+}
+
+.join-button.initialized:hover .line {
+    /* transition: border-bottom 0.3s ease-in-out; */
+    /* animation: leftright 0.3s forwards;
+    cursor: pointer; */
+    transform: scaleX(1);
+}
+
+.join-button.initialized:not(:hover) .line {
+    /* animation: rightleft 0.3s forwards; */
+    transform: scaleX(0);
+}
+
+.line {
+    width: 405px;
+    border-bottom: 3px solid white;
+    transform-origin: left;
+    transform: scaleX(0);
+    transition: transform 0.3s ease-in-out;
+}
+
+/* @keyframes leftright {
+    0% {width: 0px;}
+    100% {width: 405px;}
+}
+
+@keyframes rightleft {
+    0% {width: 405px;}
+    100% {width: 0px;}
+} */
+
+.pursue-text {
+    width: 100%
+}
+
+.pursue-text h1 {
+    /* font-family: 'Neue Haas Grotesk Display Pro', sans-serif; */
+    font-family: 'Neue Haas Custom', sans-serif;
+    font-size: 63px;
+    font-weight: 1;
+    margin-bottom: 10px;
+}
+
+.home-text h1 {
+    color: white;
+}
+
+.socials {
+    position: fixed;
+    top: 2%;
+    left: 15px;
+    z-index: 3;
+}
+
+.socials a {
+    text-decoration: none;
+}
+
+.socials svg {
+    margin-right: 7px;
+    transition: opacity 0.2s ease-in-out;
+}
+
+.socials svg:hover {
+    opacity: 0.7;
+}
+
+
+/* MOVING TEXT TEST*/
+
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    box-sizing: border-box;
+    padding: 10px 0;
+}
+
+.marquee p {
+    color: white;
+    padding-left: 50%;
+    animation: marquee 25s linear infinite;
+    display: inline-block;
+    letter-spacing: 2px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-style: italic;
+}
+
+@keyframes marquee {
+    0% {
+        transform: translateX(42%);
+    }
+    100% {
+        transform: translateX(-100%);
+    }
+}
+
+
+/* @media (max-width: 1400px) and (min-width: 1000px) {
+    .background-image img {
+        width: 1400px;
+    }
+    #HPC-logo {
+        left: -100px;
+    }
+} */
+/* 
+@media (max-width: 1200px) and (minwidth: 1000px) {
+
+} */
+
+@media (max-width: 1000px) {
+    .pursue-text h1 {
+        font-size: 50px;
+        font-weight: bold;
+    }
+    #join {
+        font-size: 55px;
+    }
+    .line {
+        width: 330px;
+    }
+    .socials {
+        left: 3%
+    }
+    .socials svg {
+        width: 60px;
+        height: 60px;
+        margin-right: 14px;
+    }
+    .pursue-text {
+        margin-left: -100px;
+        width: 500px;
+    }
+}
+
+@media (max-width: 1400px) and (min-width: 1000px) {
+    .pursue-text h1 {
+        font-size: 50px;
+    }
+    #join {
+        font-size: 55px;
+    }
+    .line {
+        width: 330px;
+    }
+}
+
+@font-face {
+    font-family: 'Neue Haas Custom';
+    src: url('../fonts/NeueHaasDisplayXXThin.ttf') format('truetype');
+}
+
+body::after {
+    content: "";
+    display: block;
+    height: 20px;
+}
+
+/* Modal Styling */
+
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1000;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    transition: background-color 0.3s ease;
+}
+
+.modal.show {
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-content {
+    /* background-color: #1a1a1a; */
+    background-color: rgba(0,0,0,0.6);
+    margin: 15% auto;
+    padding: 20px;
+    width: 300px;
+    color: white;
+    position: relative;
+    left: 25%;
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.modal.show .modal-content {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.modal-content h2 {
+    margin-top: 0;
+    font-family: 'Arial', sans-serif;
+}
+
+.modal-content input {
+    width: 92%;
+    padding: 10px;
+    margin: 10px 0;
+    background-color: initial;
+    border: none;
+    color: white;
+    font-family: 'Arial', sans-serif;
+    font-size: 16px;
+    font-weight: bold;
+
+    outline: none;
+}
+
+.modal-content button {
+    width: 100%;
+    padding: 10px;
+    background-color: initial;
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 16px;
+    font-family: 'Arial', sans-serif;
+}
+
+.modal-content button:hover {
+    background-color: #272928;
+}
+
+.success-message h1 {
+    font-family: 'Neue Haas Custom', sans-serif;
+    font-size: 54px;
+    font-weight: 1;
+    margin-bottom: 5px;
+}
+
+.success-message p {
+    font-family: 'PT Serif', serif;
+    font-weight: 1;
+    font-size: 15px;
+    text-decoration: none;
+    color: white;
+    margin-left: 75px;
+}
+
+.error-input-line {
+    border-bottom: 2px solid red !important;
+    transition: border-bottom 0.3s ease-in-out;
+}
+
+#email {
+    border-bottom: 2px solid rgba(0,0,0,0.6);
+    transition: all 0.3s ease;
+}
+
+#name {
+    border-bottom: 2px solid rgba(0,0,0,0.6);
+    transition: all 0.3s ease;
+}
+
+.input-group {
+    position: relative;
+    width: 100%;
+    margin-bottom: 15px;
+}
+
+.error-message {
+    color: red;
+    font-size: 12px;
+    font-family: 'Arial', sans-serif;
+    position: absolute;
+    bottom: -20px;
+    left: 0;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+}
+
+.error-message.show {
+    opacity: 1;
+    transform: translateY(0);
+}
