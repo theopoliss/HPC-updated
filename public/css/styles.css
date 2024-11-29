@@ -51,13 +51,15 @@ body {
     to { opacity: 1; }
 }
 #join {
-    font-family: 'PT Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 1;
     font-size: 67px;
     margin-bottom: 0px;
     margin-top: 10px;
     text-decoration: none;
     color: white;
+    font-weight: 500;
+    font-style: italic;
     /* animation: fadeIn 2s ease-in-out;
     animation-delay: 1s;
     animation-fill-mode: forwards;
@@ -83,7 +85,7 @@ body {
 }
 
 .line {
-    width: 405px;
+    width: 415px;
     border-bottom: 3px solid white;
     transform-origin: left;
     transform: scaleX(0);
@@ -354,7 +356,6 @@ body::after {
     color: white;
     font-family: 'Inter', sans-serif;
     font-size: 16px;
-    font-weight: 300;
 
     outline: none;
 }
@@ -368,7 +369,6 @@ body::after {
     cursor: pointer;
     font-size: 16px;
     font-family: 'Inter', sans-serif;
-    font-weight: 300;
     transition: 0.3s;
 }
 
@@ -384,12 +384,14 @@ body::after {
 }
 
 .success-message p {
-    font-family: 'PT Serif', serif;
+    font-family: 'Inter', sans-serif;
     font-weight: 1;
     font-size: 16px;
     text-decoration: none;
     color: white;
     margin-left: 75px;
+    font-weight: 600;
+    font-style: italic;
 }
 
 .error-input-line {
