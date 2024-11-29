@@ -1,6 +1,6 @@
 const express = require('express');
 const mongoose = require('mongoose');
-const Subscriber = require('./models/subscriber')
+const Subscriber = require('./models/subscriber');
 const app = express();
 const PORT = 3000;
 
@@ -30,9 +30,15 @@ app.post('/join', async (request, response) => {
 
         // Save to database
         await subscriber.save();
+
+        // Send welcome email
+        // await sendWelcomeEmail(name, email);
+
         response.json( {success: true });
+        
     }
     catch (error) {
+        // Email already registered
         if(error.code === 11000) {
             return response.status(400).json({
                 success: false,

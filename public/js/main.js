@@ -26,7 +26,6 @@ window.addEventListener('scroll', function() {
 // Modal functionality
 var modal = document.getElementById('signupModal');
 var joinButton = document.getElementById('join');
-var closeButton = document.getElementById('closeModal');
 
 joinButton.onclick = function(e) {
     e.preventDefault();
@@ -43,6 +42,16 @@ window.onclick = function(event) {
         document.getElementById('join').style.display = 'block';
     }
 }
+
+// Menu dropdown functionality
+var dropdownToggle = document.querySelector('.dropdown-toggle');
+
+dropdownToggle.onclick = function(event) {
+    console.log(event);
+    event.preventDefault();
+    showMenu();
+}
+
 
 function isValidEmail(email) {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^s\@]+$/;
@@ -159,4 +168,32 @@ function hideModal() {
     setTimeout(() => {
         modal.style.display = 'none';
     }, 300);
+}
+
+function showMenu() {
+    const dropdownMenu = document.querySelector('.dropdown-menu');
+    const menuIcon = document.querySelector('.menu-icon');
+    const closeIcon = document.querySelector('.close-icon');
+
+    if (dropdownMenu.classList.contains('show')) {
+        // Menu currently showing; hide menu
+        dropdownMenu.classList.remove('show');
+        setTimeout(() => {
+            dropdownMenu.style.display = 'none';
+        }, 300);
+
+        // Hide close icon, show menu icon
+        menuIcon.style.display = 'block';
+        closeIcon.style.display = 'none';
+    } else {
+        // Menu not showing; show menu
+        dropdownMenu.style.display = 'block';
+        setTimeout(() => {
+            dropdownMenu.classList.add('show');
+        }, 10);
+        
+        // Hide menu icon, show close icon
+        menuIcon.style.display = 'none';
+        closeIcon.style.display = 'block';
+    }
 }
